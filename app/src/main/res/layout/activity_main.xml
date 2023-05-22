@@ -6,7 +6,7 @@
     xmlns:app="http://schemas.android.com/apk/res-auto">
 
     <TextView
-        android:id="@+id/name_TV"
+        android:id="@+id/name_textview"
         android:layout_height="30dp"
         android:layout_width="wrap_content"
         android:layout_marginStart="210dp"
@@ -17,6 +17,16 @@
         android:maxEms="7"
         />
 
+    <TextView
+        android:id="@+id/descirption_TV"
+        android:layout_width="wrap_content"
+        android:layout_height="451dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="240dp"
+        android:layout_marginEnd="40dp"
+        android:text="@string/des"
+        android:textSize="20sp" />
+
     <Button
         android:id="@+id/call_button"
         android:layout_width="80dp"
@@ -25,7 +35,6 @@
         android:layout_marginTop="130dp"
         android:background="#4CAF50"
         android:text="@string/call"
-        android:onClick="make_call"
         />
 
     <Button
