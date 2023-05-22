@@ -14,6 +14,13 @@ import android.widget.Toast;
 import androidx.core.app.ActivityCompat;
 import androidx.core.content.ContextCompat;
 
+import java.io.BufferedReader;
+import java.io.File;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.nio.file.Files;
+
 public class MainActivity extends Activity {
 
     @Override
@@ -57,9 +64,40 @@ public class MainActivity extends Activity {
             // define Intent object with action attribute as ACTION_SEND
         });
 
+        TextView desription_textview = (TextView) findViewById(R.id.descirption_textview);
+        String description = "empty";
+        try {
+            description = readfile("description.txt");
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        desription_textview.setText(description);
+
 
     }
 
+    private String readfile(String name) throws IOException {
+        final InputStream inputStream = getAssets().open(name);
+        final BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream));
+
+        final StringBuilder stringBuilder = new StringBuilder();
+
+        boolean done = false;
+
+        while (!done) {
+            final String line = reader.readLine();
+            done = (line == null);
+
+            if (line != null) {
+                stringBuilder.append(line);
+            }
+        }
+
+        reader.close();
+        inputStream.close();
+
+        return stringBuilder.toString();
+    }
 
 
     public void checkPermission(String permission, int requestCode)

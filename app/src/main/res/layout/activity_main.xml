@@ -18,7 +18,7 @@
         />
 
     <TextView
-        android:id="@+id/descirption_TV"
+        android:id="@+id/descirption_textview"
         android:layout_width="wrap_content"
         android:layout_height="451dp"
         android:layout_marginStart="40dp"
