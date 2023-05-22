@@ -6,6 +6,7 @@ import android.Manifest;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Bundle;
+import android.text.method.ScrollingMovementMethod;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
@@ -32,9 +33,11 @@ public class MainActivity extends Activity {
 
         ImageView image = (ImageView) findViewById(R.id.image_view);
         image.setClipToOutline(true);
-        TextView tv = (TextView) findViewById(R.id.name_textview);
-        if (tv.getText().length() > 17){
-            tv.setText(tv.getText().subSequence(0, 15) + "...");
+        TextView name_textview = (TextView) findViewById(R.id.name_textview);
+        TextView description_textview = (TextView) findViewById(R.id.description_textview);
+//        description_textview.setMovementMethod(new ScrollingMovementMethod());
+        if (name_textview.getText().length() > 17){
+            name_textview.setText(name_textview.getText().subSequence(0, 15) + "...");
         }
 
         // call button
@@ -64,7 +67,7 @@ public class MainActivity extends Activity {
             // define Intent object with action attribute as ACTION_SEND
         });
 
-        TextView desription_textview = (TextView) findViewById(R.id.descirption_textview);
+        TextView desription_textview = (TextView) findViewById(R.id.description_textview);
         String description = "empty";
         try {
             description = readfile("description.txt");
